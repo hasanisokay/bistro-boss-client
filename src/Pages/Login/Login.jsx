@@ -13,7 +13,7 @@ const Login = () => {
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
-    const [disable, setDisable] = useState(true)
+    const [disable, setDisable] = useState(false)
     const captchaRef = useRef(null)
 
     const handleLogin = (e) => {

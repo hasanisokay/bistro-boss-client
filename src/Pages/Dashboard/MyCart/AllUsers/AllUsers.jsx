@@ -3,11 +3,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const AllUsers = () => {
+    const [axiosSecure] = useAxiosSecure()
     const { data: users = [], refetch } = useQuery(["users"], async () => {
-        const res = await fetch(`https://bistro-boss-server-neon.vercel.app/users`)
-        return res.json()
+        const res = await axiosSecure.get(`/users`)
+        return res.data
     })
     const handleDelete = (user) => {
 

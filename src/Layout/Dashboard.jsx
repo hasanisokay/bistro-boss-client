@@ -3,11 +3,13 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { FaBars, FaBook, FaCalendarAlt, FaHome, FaJediOrder, FaShoppingCart, FaUserAlt, FaUsers, FaUtensils, FaWallet } from "react-icons/fa"
 import { Helmet } from 'react-helmet-async';
 import useCart from '../Hooks/useCart';
+import useAdmin from '../Hooks/useAdmin';
 const Dashboard = () => {
     const [cart] = useCart()
+    const [isAdmin] = useAdmin() 
 
+    // const isAdmin = true;
 
-    const isAdmin = true;
     return (
         <>
             <Helmet>
@@ -25,7 +27,7 @@ const Dashboard = () => {
                         {
                             isAdmin ? <>
                                 <li><NavLink to="/dashboard/home"> <FaHome /> Admin Home </NavLink></li>
-                                <li><NavLink to="/dashboard/reservations"> <FaUtensils/> Add Items </NavLink></li>
+                                <li><NavLink to="/dashboard/addItem"> <FaUtensils/> Add an Item </NavLink></li>
                                 <li><NavLink to="/dashboard/items"><FaWallet /> Manage Items</NavLink></li>
                                 <li><NavLink to="/dashboard/bookings"><FaBook/> Manage Bookings</NavLink></li>
                                 <li><NavLink to="/dashboard/allusers"><FaUsers/> All Users</NavLink></li>
